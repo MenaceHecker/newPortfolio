@@ -1,14 +1,12 @@
 import React from 'react'
+import Hero from './sections/Hero'
 
 const App = () => {
   return (
-    <main>
-        <div>
-            <h1>
-                New Portfolio
-            </h1>
-        </div>
-    </main>
+    <>
+    <Hero/>
+    
+    </>
   )
 }
 
