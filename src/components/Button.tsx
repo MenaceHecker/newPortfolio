@@ -1,7 +1,5 @@
 // src/components/Button.tsx
 
-import React from 'react';
-
 interface ButtonProps {
   text: string;
   className?: string;
