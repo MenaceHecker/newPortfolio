@@ -13,7 +13,7 @@ const Hero = () => {
                 <div className='flex flex-col gap-7'>
                     <div className='hero-text'>
                         <h1>
-                            The Last Time is NOW
+                            The Last Time
                             <span className='slide'>
                                 <span className='wrapper'>
                                     {words.map((word) => (
@@ -25,7 +25,7 @@ const Hero = () => {
                                 </span>
                             </span>
                         </h1>
-                        <h1>Is Now</h1>
+                        <h1>Is NOW</h1>
                         <h1>End of an Era</h1>
                     </div>
                     <p className='text-white-50 md:text-xl relative z-10 pointer-events-none'>
@@ -39,7 +39,7 @@ const Hero = () => {
                 </div>
             </header>
             <figure>
-                <div className='hero-3d-layou'>
+                <div className='hero-3d-layout'>
                     <HeroExperience/>
 
                 </div>

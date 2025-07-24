@@ -8,32 +8,25 @@ Source: https://sketchfab.com/3d-models/my-workspace-xyz-a0c8b0c64023406fb75826c
 Title: My Workspace. XYZ
 */  
 
-import * as React from 'react'; // Use * as React for consistency in TSX
+import * as React from 'react';
 import { useGLTF } from '@react-three/drei';
+import * as THREE from 'three';
 import type { GLTF } from 'three-stdlib';
 
-// Define a type for the props of your component
-// You can add more specific types if you expect other props like position, rotation, etc.
+// Define a type for the GLTF result with proper Three.js types
 type GLTFResult = GLTF & {
   nodes: {
-    // You can list specific node names and their types if you need to access them directly
-    // e.g., SpeakerLeft_Plastic_0: THREE.Mesh;
-    // For now, using a generic index signature is fine for auto-generated files
-    [name: string]: THREE.Mesh;
+    [key: string]: THREE.Mesh;
   };
   materials: {
-    // Similar to nodes, you can list specific material names and their types
-    // e.g., Plastic: THREE.Material;
-    [name: string]: THREE.Material;
+    [key: string]: THREE.Material;
   };
 };
 
-// Define the component's functional type
-// React.JSX.IntrinsicElements['group'] provides the standard props for a <group> element
-// This allows you to pass common Three.js props like position, rotation, scale, etc.
-export function Model(props: JSX.IntrinsicElements['group']) {
-  // Cast useGLTF result to your defined GLTFResult type
-  const { nodes, materials } = useGLTF('/models/my_workspace._xyz.glb') as GLTFResult;
+// Use proper React Three Fiber group props type
+export function Model(props: React.ComponentProps<'group'>) {
+  // Use the generic GLTF type and cast with unknown first for safety
+  const { nodes, materials } = useGLTF('/models/my_workspace._xyz.glb') as unknown as GLTFResult;
 
   return (
     <group {...props} dispose={null}>
@@ -69,13 +62,29 @@ export function Model(props: JSX.IntrinsicElements['group']) {
       <mesh geometry={nodes.Tablet_Castors_0.geometry} material={materials.Castors} />
       <mesh geometry={nodes.Tablet_Mat_0.geometry} material={materials.material} />
       <mesh geometry={nodes.Tablet_Plastic_0.geometry} material={materials.Plastic} />
-      <mesh geometry={nodes.pCube4_lambert1_0.geometry} material={materials.lambert1} position={[3.926, 4.363, -2.341]} scale={[0.093, 0.046, 0.192]} />
+      <mesh 
+        geometry={nodes.pCube4_lambert1_0.geometry} 
+        material={materials.lambert1} 
+        position={[3.926, 4.363, -2.341]} 
+        scale={[0.093, 0.046, 0.192]} 
+      />
       <mesh geometry={nodes.ElectricExtender_lambert1_0.geometry} material={materials.lambert1} />
-      <mesh geometry={nodes.SpeakersCable_Cable_0.geometry} material={materials.Cable} position={[-1.638, 4.319, -1.46]} rotation={[Math.PI / 2, 0, 0]} scale={0.018} />
+      <mesh 
+        geometry={nodes.SpeakersCable_Cable_0.geometry} 
+        material={materials.Cable} 
+        position={[-1.638, 4.319, -1.46]} 
+        rotation={[Math.PI / 2, 0, 0]} 
+        scale={0.018} 
+      />
       <mesh geometry={nodes.SecondMonitorCable_Cable_0.geometry} material={materials.Cable} />
       <mesh geometry={nodes.MainMonitorCable_Cable_0.geometry} material={materials.Cable} />
       <mesh geometry={nodes.MouseCable_Cable_0.geometry} material={materials.Cable} />
-      <mesh geometry={nodes.pCube5_Wood_0.geometry} material={materials.Wood} position={[0, -0.111, 0]} scale={[22.353, 0.175, 14.32]} />
+      <mesh 
+        geometry={nodes.pCube5_Wood_0.geometry} 
+        material={materials.Wood} 
+        position={[0, -0.111, 0]} 
+        scale={[22.353, 0.175, 14.32]} 
+      />
     </group>
   );
 }
