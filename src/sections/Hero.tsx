@@ -1,9 +1,7 @@
 import React from 'react'
+import { words } from '../constants'
 
-const words = [
-    {text: 'Ideas', imgPath:'images/ideas.svg' },
-    {text: 'Ideas', imgPath:'images/ideas.svg' },
-]
+
 const Hero = () => {
   return (
     <section id="hero" className='relative overflow-hidden'>
@@ -15,21 +13,24 @@ const Hero = () => {
                 <div className='flex flex-col gap-7'>
                     <div className='hero-text'>
                         <h1>
-                            The Last Time
+                            The Last Time is NOW
                             <span className='slide'>
                                 <span className='wrapper'>
                                     {words.map((word) => (
                                         <span key={word.text} className='flex items-center md:gap-3 gap-1 pb-2'>
-                                            <img src={word.imgPath} alt={word.text} />
+                                            <img src={word.imgPath} alt={word.text} className='xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50'/>
+                                            <span>{word.text}</span>
                                         </span>
                                     ))}
                                 </span>
-
                             </span>
-
                         </h1>
+                        <p className='text-white-50 md:text-xl relative z-10 pointer-events-none'>
+                            Hi, I am Tushar, a CS graduate from UGA. 
+                        </p>
                         <h1>Is Now</h1>
                         <h1>End of an Era</h1>
+
                     </div>
 
                 </div>
