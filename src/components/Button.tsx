@@ -12,7 +12,15 @@ const Button = ({ text, className, id, onClick }: ButtonProps) => {
     <a 
       className={`cta-wrapper ${className || ''}`}
       id={id}
-      onClick={onClick}
+      onClick={(e) => {
+        e.preventDefault();
+        const target = document.getElementById('counter')
+        if(target && id){
+          const offset = window.innerHeight * 0.15;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo ({top, behavior : 'smooth'})
+        }
+      }}
     >
       <div className='cta-button group h-full w-full'>
         <div className='bg-circle h-full w-full flex items-center justify-center px-6 py-3'>

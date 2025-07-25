@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
@@ -15,39 +15,164 @@ type GLTFResult = GLTF & {
   };
 };
 
-// Simple screen texture hook
-const useScreenTexture = (text: string, bgColor: string = '#1a1a2e', textColor: string = '#00d4ff') => {
-  const textureRef = useRef<THREE.CanvasTexture | null>(null);
-  
+// Enhanced screen texture hook for creating realistic screen content
+const useScreenTexture = (screenType: 'vscode' | 'github' | 'text', textContent?: string) => {
   const texture = useMemo(() => {
-    // Create canvas
     const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 256;
+    canvas.width = 512;
+    canvas.height = 512;
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
     
-    // Clear background
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (screenType === 'vscode') {
+      // VS Code dark theme
+      ctx.fillStyle = '#1e1e1e';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Top bar
+      ctx.fillStyle = '#2d2d30';
+      ctx.fillRect(0, 0, canvas.width, 30);
+      
+      // Sidebar
+      ctx.fillStyle = '#252526';
+      ctx.fillRect(0, 30, 60, canvas.height - 30);
+      
+      // Code area
+      ctx.fillStyle = '#1e1e1e';
+      ctx.fillRect(60, 30, canvas.width - 60, canvas.height - 30);
+      
+      // Add some code-like text
+      ctx.fillStyle = '#d4d4d4';
+      ctx.font = '8px Monaco, monospace';
+      ctx.textAlign = 'left';
+      
+      const codeLines = [
+        'import React from "react";',
+        'import { useState } from "react";',
+        '',
+        'function App() {',
+        '  const [count, setCount] = useState(0);',
+        '',
+        '  return (',
+        '    <div className="App">',
+        '      <h1>Tushar\'s Projects</h1>',
+        '      <button onClick={() => setCount(c => c + 1)}>',
+        '        Count: {count}',
+        '      </button>',
+        '    </div>',
+        '  );',
+        '}',
+        'export default App;',
+      ];
+      
+      codeLines.forEach((line, i) => {
+        if (line.includes('import') || line.includes('from')) {
+          ctx.fillStyle = '#c586c0';
+        } else if (line.includes('function') || line.includes('const') || line.includes('return')) {
+          ctx.fillStyle = '#569cd6';
+        } else if (line.includes('React') || line.includes('useState')) {
+          ctx.fillStyle = '#4ec9b0';
+        } else if (line.includes('"') || line.includes("'")) {
+          ctx.fillStyle = '#ce9178';
+        } else {
+          ctx.fillStyle = '#d4d4d4';
+        }
+        ctx.fillText(line, 70, 50 + i * 12);
+      });
+      
+    } else if (screenType === 'github') {
+      // GitHub dark theme
+      ctx.fillStyle = '#0d1117';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Header
+      ctx.fillStyle = '#21262d';
+      ctx.fillRect(0, 0, canvas.width, 50);
+      
+      // Profile section
+      ctx.fillStyle = '#161b22';
+      ctx.fillRect(10, 60, canvas.width - 20, 140);
+      
+      // Profile picture placeholder (circle)
+      ctx.fillStyle = '#30363d';
+      ctx.beginPath();
+      ctx.arc(50, 110, 20, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      // Add GitHub-like text
+      ctx.fillStyle = '#f0f6fc';
+      ctx.font = 'bold 10px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('Tushar Mishra', 80, 105);
+      
+      ctx.fillStyle = '#8b949e';
+      ctx.font = '8px Arial';
+      ctx.fillText('MenaceHecker', 80, 120);
+      ctx.fillText('CS @uga \'25 | Ex SWE Intern @crst', 20, 140);
+      ctx.fillText('Full-stack & Cloud Dev | AI + DevOps', 20, 155);
+      ctx.fillText('Building scalable, data-driven apps', 20, 170);
+      
+      // Repository list
+      ctx.fillStyle = '#f0f6fc';
+      ctx.font = '8px Arial';
+      const repos = [
+        '📁 SocialMedia-Crumb',
+        '📁 AI-Projects', 
+        '📁 React-Portfolio',
+        '📁 Three.js-Demos',
+        '📁 Spring-Boot-Apps',
+        '📁 AWS-DevOps'
+      ];
+      repos.forEach((repo, i) => {
+        ctx.fillText(repo, 20, 220 + i * 20);
+      });
+      
+      // Stats
+      ctx.fillStyle = '#58a6ff';
+      ctx.font = '7px Arial';
+      ctx.fillText('⭐ 23 repositories • 👥 2 followers • 1 following', 20, 380);
+      ctx.fillText('📍 Athens, GA • 🕐 19:37 (UTC -04:00)', 20, 395);
+      
+    } else {
+      // Simple text fallback
+      ctx.fillStyle = '#1a1a2e';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00d4ff';
+      ctx.font = 'bold 16px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(textContent || 'SCREEN', canvas.width / 2, canvas.height / 2);
+    }
     
-    // Add your name
-    ctx.fillStyle = textColor;
-    ctx.font = 'bold 32px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
-    
-    // Create texture
     const texture = new THREE.CanvasTexture(canvas);
     texture.needsUpdate = true;
-    textureRef.current = texture;
-    
     return texture;
-  }, [text, bgColor, textColor]);
+  }, [screenType, textContent]);
 
   return texture;
+};
+
+// Hook to load images
+const useImageLoader = (src: string) => {
+  const [image, setImage] = useState<HTMLImageElement | null>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous'; // Handle CORS if needed
+    img.onload = () => {
+      setImage(img);
+      setLoaded(true);
+    };
+    img.onerror = () => {
+      console.error(`Failed to load image: ${src}`);
+      setLoaded(true);
+    };
+    img.src = src;
+  }, [src]);
+
+  return { image, loaded };
 };
 
 // Use proper React Three Fiber group props type
@@ -55,10 +180,10 @@ export function Model(props: React.ComponentProps<'group'>) {
   // Use the generic GLTF type and cast with unknown first for safety
   const { nodes, materials } = useGLTF('/models/my_workspace._xyz.glb') as unknown as GLTFResult;
   
-  // Create simple screen textures
-  const leftScreenTexture = useScreenTexture('YOUR NAME', '#1a1a2e', '#00d4ff');
-  const rightScreenTexture = useScreenTexture('PORTFOLIO', '#0a1a0a', '#00ff88');
-  const tabletScreenTexture = useScreenTexture('DEVELOPER', '#1a0a1a', '#ff6b6b');
+  // Create realistic screen textures
+  const leftScreenTexture = useScreenTexture('vscode');
+  const rightScreenTexture = useScreenTexture('github');
+  const tabletScreenTexture = useScreenTexture('text', 'DEVELOPER');
   
   // Create screen materials
   const leftScreenMaterial = useMemo(() => {
@@ -119,10 +244,10 @@ export function Model(props: React.ComponentProps<'group'>) {
       <mesh geometry={nodes.Computer_Plastic_0.geometry} material={materials.Plastic} />
       <mesh geometry={nodes.Computer_Comp2_0.geometry} material={materials.Comp2} />
       <mesh geometry={nodes.LeftMonitor_Plastic_0.geometry} material={materials.Plastic} />
-      {/* Left Monitor Screen with Custom Content */}
+      {/* Left Monitor Screen with VS Code Screenshot */}
       <mesh geometry={nodes.LeftMonitor_Screen_0.geometry} material={leftScreenMaterial} />
       <mesh geometry={nodes.RightMonitor_Plastic_0.geometry} material={materials.Plastic} />
-      {/* Right Monitor Screen with Custom Content */}
+      {/* Right Monitor Screen with GitHub Profile */}
       <mesh geometry={nodes.RightMonitor_Screen_0.geometry} material={rightScreenMaterial} />
       <mesh geometry={nodes.Tablet_Castors_0.geometry} material={materials.Castors} />
       <mesh geometry={nodes.Tablet_Mat_0.geometry} material={materials.material} />
