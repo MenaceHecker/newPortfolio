@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { useRef, useMemo, useState, useEffect } from 'react';
+import { useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import type { GLTF } from 'three-stdlib';
 
@@ -153,27 +152,26 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text', textContent?
   return texture;
 };
 
-// Hook to load images
-const useImageLoader = (src: string) => {
-  const [image, setImage] = useState<HTMLImageElement | null>(null);
-  const [loaded, setLoaded] = useState(false);
+// const useImageLoader = (src: string) => {
+//   const [image, setImage] = useState<HTMLImageElement | null>(null);
+//   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous'; // Handle CORS if needed
-    img.onload = () => {
-      setImage(img);
-      setLoaded(true);
-    };
-    img.onerror = () => {
-      console.error(`Failed to load image: ${src}`);
-      setLoaded(true);
-    };
-    img.src = src;
-  }, [src]);
+//   useEffect(() => {
+//     const img = new Image();
+//     img.crossOrigin = 'anonymous'; // Handle CORS if needed
+//     img.onload = () => {
+//       setImage(img);
+//       setLoaded(true);
+//     };
+//     img.onerror = () => {
+//       console.error(`Failed to load image: ${src}`);
+//       setLoaded(true);
+//     };
+//     img.src = src;
+//   }, [src]);
 
-  return { image, loaded };
-};
+//   return { image, loaded };
+// };
 
 // Use proper React Three Fiber group props type
 export function Model(props: React.ComponentProps<'group'>) {
