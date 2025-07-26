@@ -15,7 +15,7 @@ const Nav: React.FC<NavProps> = () => {
 
   const navItems = [
     { href: '#', icon: Home, label: 'Home' },
-    { href: '#about', icon: User, label: 'About' },
+    { href: '#AnimatedCounter', icon: User, label: 'About' },
     { href: '#experience', icon: Monitor, label: 'Experience' },
     { href: '#cv', icon: BookOpen, label: 'CV' },
     { href: '#projects', icon: Briefcase, label: 'Projects' },
@@ -28,7 +28,7 @@ const Nav: React.FC<NavProps> = () => {
 
   return (
     <nav className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-10 
-                   bg-black bg-opacity-30 backdrop-blur-md
+                   bg-black bg-opacity-10 backdrop-blur-sm
                    flex gap-3 px-7 py-3 rounded-full
                    max-w-max">
       {navItems.map(({ href, icon: Icon, label }) => (
