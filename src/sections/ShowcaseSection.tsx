@@ -25,9 +25,9 @@ const ShowcaseSection = () => {
                     </div>
                     <div className="project">
                         <div className="image-wrapper bg-[#d5d0c8]">
-                        <img src="/images/project2.png" alt="Email Organizer" />
+                        <img src="/images/project3.png" alt="Email Organizer" />
                         </div>
-                        <h2>Smart Email Organizer</h2>
+                        <h2>CareerSync Resume Matcher</h2>
                     </div>
                 </div>
             </div>
