@@ -1,6 +1,12 @@
+import { useRef } from "react"
+
 const ShowcaseSection = () => {
+    const sectionRef = useRef(null);
+    const project1Ref = useRef(null); 
+    const project2Ref = useRef(null); 
+    const project3Ref = useRef(null); 
   return (
-    <div id="work"className='app-showcase'>
+    <section id="work"className='app-showcase'>
         <div className='w-full'>
             <div className='showcaselayout'>
                 {/* LEFT SIDE */}
@@ -32,7 +38,7 @@ const ShowcaseSection = () => {
                 </div>
             </div>
         </div>
-    </div>
+    </section>
   )
 }
 
