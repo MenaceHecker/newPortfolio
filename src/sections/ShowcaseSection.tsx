@@ -3,12 +3,18 @@ import {gsap} from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {useGSAP} from '@gsap/react'
 
-gsap.registerPlugin(ScrollTrigger));
+gsap.registerPlugin(ScrollTrigger);
 const ShowcaseSection = () => {
     const sectionRef = useRef(null);
     const project1Ref = useRef(null); 
     const project2Ref = useRef(null); 
     const project3Ref = useRef(null); 
+
+    useGSAP(() => {
+        if (sectionRef.current) {
+            gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 });
+        }
+    }, []);
   return (
     <section id="work" ref={sectionRef} className='app-showcase'>
         <div className='w-full'>
