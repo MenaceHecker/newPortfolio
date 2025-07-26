@@ -18,9 +18,17 @@ const ShowcaseSection = () => {
                 {/* RIGHT SIDE */}
                 <div className="project-list-wrapper overflow-hidden">
                     <div className="project">
-
+                        <div className="image-wrapper bg-[#d5d0c8]">
+                        <img src="/images/project2.png" alt="Email Organizer" />
+                        </div>
+                        <h2>Smart Email Organizer</h2>
                     </div>
-
+                    <div className="project">
+                        <div className="image-wrapper bg-[#d5d0c8]">
+                        <img src="/images/project2.png" alt="Email Organizer" />
+                        </div>
+                        <h2>Smart Email Organizer</h2>
+                    </div>
                 </div>
             </div>
         </div>
