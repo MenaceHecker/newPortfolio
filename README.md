@@ -69,3 +69,4 @@ export default tseslint.config([
 
 To convert the model into a tsx file, use this command:
     npx gltfjsx your-model.glb --types
+(This command does not always work)
