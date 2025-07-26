@@ -14,7 +14,6 @@ type GLTFResult = GLTF & {
   };
 };
 
-// Enhanced screen texture hook for creating realistic screen content
 const useScreenTexture = (screenType: 'vscode' | 'github' | 'text', textContent?: string) => {
   const texture = useMemo(() => {
     const canvas = document.createElement('canvas');
