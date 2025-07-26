@@ -6,7 +6,13 @@ const ShowcaseSection = () => {
                 {/* LEFT SIDE */}
                 <div className="first-project-wrapper">
                     <div className="image-wrapper">
-                        <img src="" alt="" />
+                        <img src="/images/project1.png" alt="crumb" />
+                    </div>
+                    <div className="text-content">
+                        <h2>New Innovative way to make Friends with crumb</h2>
+                        <p className="text-white-50 md:text-xl">
+                            An App built with React Native, Expo, Supabase and TailwindCSS with fast UI
+                        </p>
                     </div>
                 </div>
                 {/* RIGHT SIDE */}
