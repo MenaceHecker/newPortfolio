@@ -147,42 +147,45 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
+    review: "Tushar's contributions significantly enhanced our frontend and microservice infrastructure. His ability to modernize enterprise systems and optimize performance was impressive.",
     imgPath: "/images/exp1.png",
     logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "January 2023 - Present",
+    title: "Software Engineer Intern",
+    date: "June 2024 - August 2024",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
+      "Rebuilt enterprise-facing Capacity Portal frontend using Angular and NgRx Store, improving UI responsiveness by 35%.",
+      "Architected Java Spring Boot microservices on Kubernetes, accelerating API responses by 30% for 10,000+ daily requests.",
+      "Implemented centralized logging with Elasticsearch/Kibana, halving issue resolution time.",
+      "Established Prometheus-based monitoring with 25+ dashboards, improving production issue detection by 40%.",
     ],
   },
   {
-    review: "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
+    review: "Tushar played a key role in research-driven AI development. His expertise in machine learning and cloud deployment made impactful contributions to our lab projects.",
     imgPath: "/images/exp2.png",
     logoPath: "/images/logo2.png",
-    title: "Full Stack Developer",
-    date: "June 2020 - December 2023",
+    title: "Lead Undergraduate Research Assistant",
+    date: "January 2024 - May 2024",
     responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-      "Contributed to open-source projects that were used with the Docker ecosystem.",
+      "Built AI predictive models using Transformers and Graph Neural Networks, improving accuracy by 15%.",
+      "Designed optimized SQL schemas and GraphQL APIs in PostgreSQL, enhancing query performance by 25%.",
+      "Orchestrated ML models on AWS Lambda for scalable AI-based fact-checking.",
+      "Refactored pipelines to improve cloud integration and reduce processing time by 20%.",
     ],
   },
   {
-    review: "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
+    review: "Tushar’s support kept our technical systems running smoothly and securely. His proactive approach and cloud migration efforts enhanced service delivery across departments.",
     imgPath: "/images/exp3.png",
     logoPath: "/images/logo3.png",
-    title: "React Native Developer",
-    date: "March 2019 - May 2020",
+    title: "Technology Support Assistant",
+    date: "March 2023 – December 2023",
     responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      "Improved app performance and user experience through code optimization and testing.",
-      "Coordinated with the product team to implement features based on feedback.",
+      "Provided technical support to 1,000+ users, maintaining an 80% first contact resolution rate.",
+      "Resolved 100+ hardware, software, and network issues, reducing recurring problems by 25%.",
+      "Executed Azure-based cloud migrations for 6 departments, improving scalability and security.",
     ],
   },
 ];
+
 
 const expLogos = [
   {
