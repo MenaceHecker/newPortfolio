@@ -1,6 +1,9 @@
 import GlowCard from "../components/GlowCard"
 import TitleHeader from "../components/TitleHeader"
 import { expCards } from "../constants"
+import gsap from 'gsap'
+import {useGSAP} from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 const ExperienceSection = () => {
   return (
@@ -32,6 +35,17 @@ const ExperienceSection = () => {
                         </div>
                         <div>
                           <h1 className="font-semibold text-3xl">{card.title}</h1>
+                          <p className="my-5 text-white-50">
+                            📅{card.date}
+                          </p>
+                          <p className="text-[#839cb5] italic"> Responsibilities</p>
+                          <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                            {card.responsibilities.map((responsibility) => (
+                              <li key={responsibility} className="text-lg">
+                                {responsibility}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                     </div>
