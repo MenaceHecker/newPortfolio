@@ -1,3 +1,4 @@
+import TechIcon from "../components/Models/TechLogos/TechIcon"
 import TitleHeader from "../components/TitleHeader"
 import { techStackIcons } from "../constants"
 
@@ -14,7 +15,10 @@ const TechStack = () => {
                             <div className="tech-card-animated-bg"/>
                             <div className="tech-card-content">
                                 <div className="tech-icon-wrapper">
-                                    
+                                    <TechIcon model={icon}/>
+                                </div>
+                                <div className="padding-x w-full">
+                                   <p>{icon.name}</p>
                                 </div>
                             </div>
                         </div>
