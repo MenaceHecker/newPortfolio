@@ -4,7 +4,7 @@ import { techStackIcons } from "../constants"
 
 const TechStack = () => {
   return (
-    <div id="skills" className="flex-center section-padding">
+    <div id="skills" className="flex-center section-padding" style={{contain: 'layout style paint'}}>
         <div className="w-full h-full md:px-10 px-5">
             <TitleHeader
             title="My Favorite Tech Stack"
