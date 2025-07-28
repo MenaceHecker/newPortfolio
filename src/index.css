@@ -237,7 +237,7 @@ section {
   .marquee-item {
     @apply md:w-40 w-32;
   }
-
+/* 
   .timeline-wrapper {
     @apply absolute top-0 xl:left-[35.5vw] md:left-10 left-5 h-full flex justify-center;
   }
@@ -248,7 +248,23 @@ section {
 
   .timeline-logo {
     @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
-  }
+  } */
+.timeline-wrapper {
+  @apply absolute top-0 xl:left-[35.5vw] md:left-10 left-5 h-full flex justify-center;
+}
+
+.timeline-line {
+  @apply absolute z-10 h-[110%] -top-10;
+}
+
+.timeline-background {
+  @apply z-5;
+}
+
+.timeline-logo {
+  @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100 relative z-40;
+}
+
 
   .exp-card-wrapper {
     @apply flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-between;
