@@ -1,4 +1,5 @@
 import TitleHeader from "../components/TitleHeader"
+import { techStackIcons } from "../constants"
 
 const TechStack = () => {
   return (
@@ -7,7 +8,13 @@ const TechStack = () => {
             <TitleHeader
             title="My Favorite Tech Stack"
             sub="The skills I bring to the Table"/>
-
+            <div className="tech-grid">
+                {techStackIcons.map((icon) => (
+                    <div key={icon.name} className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg">
+                            <div className="tech-card-animated-bg"/>
+                        </div>
+                ))}
+            </div>
         </div>
     </div>
   )
