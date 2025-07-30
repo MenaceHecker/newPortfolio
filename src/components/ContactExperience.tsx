@@ -1,6 +1,5 @@
-import { Environment, Float, OrbitControls} from "@react-three/drei"
+import { Environment,OrbitControls} from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import * as THREE from 'three'
 import { Computer } from "./Models/Computer-optimized_new"
 
 const ContactExperience = () => {
@@ -31,6 +30,12 @@ const ContactExperience = () => {
         />
         <group scale={0.03} position={[0, -1.5, -2]} castShadow>
           <Computer/>
+        </group>
+        <group scale={[1,1,1]}>
+          <mesh receiveShadow position={[0,-1.5,0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <planeGeometry args={[30,30]}/>
+            <meshStandardMaterial color="a46b2d"/>
+          </mesh>
         </group>
     </Canvas>
   )

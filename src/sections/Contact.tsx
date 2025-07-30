@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useRef, useState} from 'react'
 import type { ChangeEvent, FormEvent } from 'react';
 import TitleHeader from '../components/TitleHeader'
 import ContactExperience from '../components/ContactExperience';
@@ -12,6 +12,7 @@ interface FormData {
 }
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -33,15 +34,16 @@ const [loading, setLoading] = useState(false);
         try{
           await emailjs.sendForm(
             import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-            import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,  
+            import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID, 
+            formRef.current!, 
             import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY, 
           )
+           setFormData({name: '', email: '', message: ''});
         }catch(error){
           console.log("Error in EmailJS", error);
         } finally{
           setLoading(false);
         }
-        setFormData({name: '', email: '', message: ''});
     };
 
     return (
@@ -65,7 +67,7 @@ const [loading, setLoading] = useState(false);
                     type="text"
                     id="name"
                     name="name"
-                    value={form.name}
+                    value={formData.name}
                     onChange={handleChange}
                     placeholder="What's your good name?"
                     required
@@ -78,7 +80,7 @@ const [loading, setLoading] = useState(false);
                     type="email"
                     id="email"
                     name="email"
-                    value={form.email}
+                    value={formData.email}
                     onChange={handleChange}
                     placeholder="What's your email address?"
                     required
@@ -90,7 +92,7 @@ const [loading, setLoading] = useState(false);
                   <textarea
                     id="message"
                     name="message"
-                    value={form.message}
+                    value={formData.message}
                     onChange={handleChange}
                     placeholder="How can I help you?"
                     rows={5}
@@ -115,6 +117,7 @@ const [loading, setLoading] = useState(false);
           <div className="xl:col-span-7 min-h-96">
             <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
               <ContactExperience/>
+            </div>
           </div>
         </div>
       </div>
