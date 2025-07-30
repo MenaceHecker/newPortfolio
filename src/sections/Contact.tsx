@@ -37,6 +37,14 @@ const Contact = () => {
                     title="Let's connect"
                     sub='Contact Information'
                 />
+                <div className='mt-16 grid-12-cols'>
+                    <div className='xl:col-span-6 col-span-12'>
+                        <form onSubmit={handleSubmit}>
+                            
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </section>
     )
