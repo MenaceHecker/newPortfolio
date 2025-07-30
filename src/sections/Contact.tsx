@@ -1,8 +1,6 @@
 import { useState} from 'react'
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import TitleHeader from '../components/TitleHeader'
-
-
 
 //When verbatimModuleSyntax is enabled in the TypeScript config, then use type-only imports for types that are only used for type annotations
 interface FormData {
@@ -24,6 +22,12 @@ const Contact = () => {
             ...formData,
             [name]: value
         });
+    };
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); 
+        console.log('Submitted data:', formData);
+        setFormData({name: '', email: '', message: ''});
     };
 
     return (
