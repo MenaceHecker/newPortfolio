@@ -1,6 +1,6 @@
 import TechIcon from "../components/Models/TechLogos/TechIcon"
 import TitleHeader from "../components/TitleHeader"
-import { techStackIcons } from "../constants"
+import { techStackIcons, techStackImgs } from "../constants"
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -187,6 +187,10 @@ const TechStack = () => {
                             </div>
                         </div>
                     ))}
+                    {techStackImgs.map((icon) => 
+                    <div className="">
+
+                    </div>)}
                 </div>
             </div>
         </div>
