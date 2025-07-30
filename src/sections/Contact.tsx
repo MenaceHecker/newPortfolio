@@ -40,7 +40,16 @@ const Contact = () => {
                 <div className='mt-16 grid-12-cols'>
                     <div className='xl:col-span-6 col-span-12'>
                         <form onSubmit={handleSubmit}>
-                            
+                            <div className='mb-6'>
+                                <label htmlFor="name">Name</label>
+                                <input 
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder='Your name'
+                                value={formData.name}
+                                onChange={handleChange}/>
+                            </div>
                         </form>
                     </div>
 
