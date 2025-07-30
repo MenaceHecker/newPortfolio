@@ -2,6 +2,7 @@ import { useState} from 'react'
 import type { ChangeEvent, FormEvent } from 'react';
 import TitleHeader from '../components/TitleHeader'
 import ContactExperience from '../components/ContactExperience';
+import emailjs from '@emailjs/browser'
 
 //When verbatimModuleSyntax is enabled in the TypeScript config, then use type-only imports for types that are only used for type annotations
 interface FormData {
@@ -16,6 +17,7 @@ const Contact = () => {
         email: '',
         message: ''
     }); 
+const [loading, setLoading] = useState(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target; 
@@ -25,9 +27,13 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault(); 
-        console.log('Submitted data:', formData);
+        try{
+
+        }catch(error){
+          console.log("Error in EmailJS", error);
+        }
         setFormData({name: '', email: '', message: ''});
     };
 
@@ -80,12 +86,12 @@ const Contact = () => {
                     value={form.message}
                     onChange={handleChange}
                     placeholder="How can I help you?"
-                    rows="5"
+                    rows={5}
                     required
                   />
                 </div>
 
-                <button type="submit">
+                <button type="submit" disabled={loading}>
                   <div className="cta-button group">
                     <div className="bg-circle" />
                     <p className="text">
