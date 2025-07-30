@@ -1,6 +1,7 @@
 import { useState} from 'react'
 import type { ChangeEvent, FormEvent } from 'react';
 import TitleHeader from '../components/TitleHeader'
+import ContactExperience from '../components/ContactExperience';
 
 //When verbatimModuleSyntax is enabled in the TypeScript config, then use type-only imports for types that are only used for type annotations
 interface FormData {
@@ -53,7 +54,7 @@ const Contact = () => {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="What’s your good name?"
+                    placeholder="What's your good name?"
                     required
                   />
                 </div>
@@ -66,7 +67,7 @@ const Contact = () => {
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="What’s your email address?"
+                    placeholder="What's your email address?"
                     required
                   />
                 </div>
@@ -100,8 +101,7 @@ const Contact = () => {
           </div>
           <div className="xl:col-span-7 min-h-96">
             <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
-              <ContactExperience />
-            </div>
+              <ContactExperience/>
           </div>
         </div>
       </div>

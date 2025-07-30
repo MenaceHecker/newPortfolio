@@ -1,19 +1,26 @@
 import { Environment, Float, OrbitControls} from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import * as THREE from 'three'
+import { Computer } from "./Models/Computer-optimized_new"
 
 const ContactExperience = () => {
   return (
     <Canvas camera={{position: [0,3,7], fov: 45}} shadows>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5,5,5]} intensity={1}/>
-      <spotLight
+      <ambientLight intensity={0.5} color="#fff436" />
+      <directionalLight position={[5,5,3]} intensity={2.5} color="ffd9b3"/>
+      <directionalLight
+        position={[5,9,1]}
+        castShadow
+        intensity={2.5}
+        color="ffd9b3"
+      />
+      {/* <spotLight
       position={[-5,5,5]}
       angle={0.15}
       penumbra={1}
       intensity={1}
       castShadow
-      />
+      /> */}
       <Environment preset="city"/>
 
       <OrbitControls
@@ -22,6 +29,9 @@ const ContactExperience = () => {
         minPolarAngle={Math.PI/4}
         maxPolarAngle={Math.PI/2}
         />
+        <group scale={0.03} position={[0, -1.5, -2]} castShadow>
+          <Computer/>
+        </group>
     </Canvas>
   )
 }
