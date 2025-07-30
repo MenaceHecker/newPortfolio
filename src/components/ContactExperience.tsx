@@ -14,6 +14,14 @@ const ContactExperience = () => {
       intensity={1}
       castShadow
       />
+      <Environment preset="city"/>
+
+      <OrbitControls
+        enableZoom={false}
+        enablePan={false}
+        minPolarAngle={Math.PI/4}
+        maxPolarAngle={Math.PI/2}
+        />
     </Canvas>
   )
 }
