@@ -29,10 +29,17 @@ const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault(); 
+        setLoading(true);
         try{
-
+          await emailjs.sendForm(
+            import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,  
+            import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY, 
+          )
         }catch(error){
           console.log("Error in EmailJS", error);
+        } finally{
+          setLoading(false);
         }
         setFormData({name: '', email: '', message: ''});
     };
