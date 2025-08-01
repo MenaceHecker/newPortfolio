@@ -10,7 +10,7 @@ Title: Gaming Setup (low-poly)
 
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
-import { GroupProps } from '@react-three/fiber'
+import { ThreeElements } from '@react-three/fiber'
 import { GLTF } from 'three-stdlib'
 import * as THREE from 'three'
 
@@ -47,8 +47,8 @@ type GLTFResult = GLTF & {
   }
 }
 
-export function Model(props: GroupProps) {
-  const { nodes, materials } = useGLTF('/gaming_setup_low-poly-transformed.glb') as GLTFResult
+export function Model(props: ThreeElements['group']) {
+  const { nodes, materials } = useGLTF('/gaming_setup_low-poly-transformed.glb') as unknown as GLTFResult
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Object_4.geometry} material={materials['Material.001']} rotation={[Math.PI / 2, 0, 0]} scale={0.349} />
