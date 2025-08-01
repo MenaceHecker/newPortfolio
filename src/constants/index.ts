@@ -148,7 +148,7 @@ const techStackIcons = [
 const expCards = [
   {
     review: "Tushar's contributions significantly enhanced our frontend and microservice infrastructure. His ability to modernize enterprise systems and optimize performance was impressive.",
-    imgPath: "/images/exp1.png",
+    imgPath: "/images/CRST_exp.png",
     logoPath: "/images/logo_CRST.png",
     title: "Software Engineer Intern",
     date: "June 2024 - August 2024",
