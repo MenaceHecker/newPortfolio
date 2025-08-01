@@ -174,7 +174,7 @@ const expCards = [
   },
   {
     review: "Tushar's support kept our technical systems running smoothly and securely. His proactive approach and cloud migration efforts enhanced service delivery across departments.",
-    imgPath: "/images/exp3.png",
+    imgPath: "/images/caes_exp.png",
     logoPath: "/images/logo_UGAcaes.png",
     title: "Technology Support Assistant",
     date: "March 2023 - December 2023",
