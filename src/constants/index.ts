@@ -149,7 +149,7 @@ const expCards = [
   {
     review: "Tushar's contributions significantly enhanced our frontend and microservice infrastructure. His ability to modernize enterprise systems and optimize performance was impressive.",
     imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
+    logoPath: "/images/logo_CRST.png",
     title: "Software Engineer Intern",
     date: "June 2024 - August 2024",
     responsibilities: [
@@ -162,7 +162,7 @@ const expCards = [
   {
     review: "Tushar played a key role in research-driven AI development. His expertise in machine learning and cloud deployment made impactful contributions to our lab projects.",
     imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
+    logoPath: "/images/logo_UGA.png",
     title: "Lead Undergraduate Research Assistant",
     date: "January 2024 - May 2024",
     responsibilities: [
@@ -173,11 +173,11 @@ const expCards = [
     ],
   },
   {
-    review: "Tushar’s support kept our technical systems running smoothly and securely. His proactive approach and cloud migration efforts enhanced service delivery across departments.",
+    review: "Tushar's support kept our technical systems running smoothly and securely. His proactive approach and cloud migration efforts enhanced service delivery across departments.",
     imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
+    logoPath: "/images/logo_UGAcaes.png",
     title: "Technology Support Assistant",
-    date: "March 2023 – December 2023",
+    date: "March 2023 - December 2023",
     responsibilities: [
       "Provided technical support to 1,000+ users, maintaining an 80% first contact resolution rate.",
       "Resolved 100+ hardware, software, and network issues, reducing recurring problems by 25%.",
