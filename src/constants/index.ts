@@ -161,7 +161,7 @@ const expCards = [
   },
   {
     review: "Tushar played a key role in research-driven AI development. His expertise in machine learning and cloud deployment made impactful contributions to our lab projects.",
-    imgPath: "/images/exp2.png",
+    imgPath: "/images/UGA_exp.png",
     logoPath: "/images/logo_UGA.png",
     title: "Lead Undergraduate Research Assistant",
     date: "January 2024 - May 2024",
