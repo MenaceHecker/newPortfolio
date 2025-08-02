@@ -1,6 +1,7 @@
 import { Environment,OrbitControls} from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Computer } from "./Models/Computer-optimized_new"
+import { Model as GamingSetup } from '../components/Models/GamingSetup'
 
 const ContactExperience = () => {
   return (
@@ -30,6 +31,7 @@ const ContactExperience = () => {
         />
         <group scale={0.03} position={[0, -1.5, -2]} castShadow>
           <Computer/>
+          {/* <GamingSetup/> */}
         </group>
         <group scale={[1,1,1]}>
           <mesh receiveShadow position={[0,-1.5,0]} rotation={[-Math.PI / 2, 0, 0]}>

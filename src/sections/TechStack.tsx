@@ -1,6 +1,6 @@
 import TechIcon from "../components/Models/TechLogos/TechIcon"
 import TitleHeader from "../components/TitleHeader"
-import { techStackIcons, techStackImgs } from "../constants"
+import { techStackIcons } from "../constants"
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'

@@ -14,7 +14,7 @@ type GlowCardProps = {
   children?: React.ReactNode;
 };
 
-const GlowCard: React.FC<GlowCardProps> = ({ card, index, children }) => {
+const GlowCard: React.FC<GlowCardProps> = ({ card, children }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [mouseAngle, setMouseAngle] = useState(0);

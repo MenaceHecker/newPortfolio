@@ -15,7 +15,7 @@ const ExperienceSection: React.FC = () => {
     const timelineLogos = gsap.utils.toArray('.timeline-logo') as HTMLElement[];
     
     // Animate timeline logos FIRST (they appear before the line)
-    timelineLogos.forEach((logo, index) => {
+    timelineLogos.forEach((logo) => {
       gsap.fromTo(logo,
         {
           scale: 0,

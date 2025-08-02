@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button = ({ text, className, id, onClick }: ButtonProps) => {
+const Button = ({ text, className, id}: ButtonProps) => {
   return (
     <a 
       className={`cta-wrapper ${className || ''}`}

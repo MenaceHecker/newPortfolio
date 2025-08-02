@@ -19,7 +19,6 @@ interface NavProps {}
 const Nav: React.FC<NavProps> = () => {
   const [activeNav, setActiveNav] = useState<string>('#home');
   const [scrolled, setScrolled] = useState<boolean>(false);
-  const [forceHover, setForceHover] = useState<boolean>(false);
 
   // Navigation items with icons
   const navItems: NavItem[] = [
