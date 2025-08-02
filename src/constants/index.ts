@@ -140,7 +140,7 @@ const techStackIcons = [
   {
     name: "Android Developer",
     modelPath: "/models/android_logo.glb",
-    scale: 0.8,
+    scale: 0.015,
     rotation: [0,0, 0],
   },
 ];
