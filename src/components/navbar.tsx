@@ -25,7 +25,7 @@ const Nav: React.FC<NavProps> = () => {
     { href: '#home', icon: Home, label: 'Home' },
     { href: '#about', icon: User, label: 'About' },
     { href: '#experience', icon: Monitor, label: 'Experience' },
-    { href: '#cv', icon: BookOpen, label: 'CV' },
+    { href: '#skills', icon: BookOpen, label: 'CV' },
     { href: '#projects', icon: Briefcase, label: 'Projects' }
   ];
 
