@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import * as THREE from "three";
 
 const TechIcon = ({model}: {model: any}) => {
-  // Handle both number and array scale values
   const scale = typeof model.scale === 'number' ? model.scale : (model.scale || [1, 1, 1]);
   const rotation = model.rotation || [0, 0, 0];
   const gltf = useGLTF(model.modelPath) as any;
@@ -18,7 +17,7 @@ const TechIcon = ({model}: {model: any}) => {
             }
         })
     }
-  }, [scene, model.name]) // Added dependency array
+  }, [scene, model.name]) 
   
   return (
     <Canvas>

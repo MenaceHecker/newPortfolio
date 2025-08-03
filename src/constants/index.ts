@@ -144,9 +144,8 @@ const expCards = [
     date: "June 2024 - August 2024",
     responsibilities: [
       "Rebuilt enterprise-facing Capacity Portal frontend using Angular and NgRx Store, improving UI responsiveness by 35%.",
-      "Architected Java Spring Boot microservices on Kubernetes, accelerating API responses by 30% for 10,000+ daily requests.",
-      "Implemented centralized logging with Elasticsearch/Kibana, halving issue resolution time.",
-      "Established Prometheus-based monitoring with 25+ dashboards, improving production issue detection by 40%.",
+      "Architected Java Spring Boot microservices , accelerating API responses by 30% for 10,000+ daily requests.",
+      "Implemented centralized logging with Elasticsearch, halving issue resolution time.",
     ],
   },
   {
