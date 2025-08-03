@@ -11,16 +11,16 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setAnimationPhase('loaded');
-    }, 1500);
+    }, 2500); 
 
     const timer2 = setTimeout(() => {
       setAnimationPhase('exiting');
-    }, 3000);
+    }, 8000); 
 
     const timer3 = setTimeout(() => {
       setIsVisible(false);
       onComplete();
-    }, 3800);
+    }, 9000); 
 
     return () => {
       clearTimeout(timer1);
@@ -53,12 +53,12 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Floating cubes */}
-        {[...Array(6)].map((_, i) => ( // Reduced from 8 to 6 for mobile
+        {[...Array(6)].map((_, i) => ( // Reducing this from 8 to 6 for mobile
           <div
             key={i}
             className="absolute w-6 h-6 sm:w-8 sm:h-8 border border-purple-400/30 transform rotate-45 animate-pulse"
             style={{
-              left: `${15 + (i % 3) * 30}%`, // Adjusted for better mobile spacing
+              left: `${15 + (i % 3) * 30}%`, 
               top: `${25 + Math.floor(i / 3) * 35}%`,
               animationDelay: `${i * 0.3}s`,
               animationDuration: '3s'
@@ -75,7 +75,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                 animationPhase === 'entering' ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'
               }`}
               style={{
-                left: `${Math.random() * 70 + 15}%`, // Keep more centered on mobile
+                left: `${Math.random() * 70 + 15}%`, 
                 top: `${Math.random() * 70 + 15}%`,
                 animationDelay: `${i * 0.2}s`
               }}
@@ -182,13 +182,11 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         </div>
       </div>
 
-      {/* Corner accents matching your design */}
       <div className="absolute top-4 left-4 sm:top-8 sm:left-8 w-12 h-12 sm:w-16 sm:h-16 border-l-2 border-t-2 border-purple-400/30"></div>
       <div className="absolute top-4 right-4 sm:top-8 sm:right-8 w-12 h-12 sm:w-16 sm:h-16 border-r-2 border-t-2 border-blue-400/30"></div>
       <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 w-12 h-12 sm:w-16 sm:h-16 border-l-2 border-b-2 border-blue-400/30"></div>
       <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-16 sm:h-16 border-r-2 border-b-2 border-purple-400/30"></div>
       
-      {/* Transition overlay */}
       <div className={`absolute inset-0 bg-black transition-opacity duration-800 ${
         animationPhase === 'exiting' ? 'opacity-100' : 'opacity-0'
       }`} />
@@ -196,34 +194,4 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   );
 };
 
-// Example App component showing smooth transition
-const App = () => {
-  const [showSplash, setShowSplash] = useState(true);
-
-  const handleSplashComplete = () => {
-    setShowSplash(false);
-  };
-
-  return (
-    <div className="min-h-screen">
-      {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-      
-      {!showSplash && (
-        <div className="min-h-screen bg-black text-white">
-          {/* This would be your actual homepage content */}
-          <div className="p-8">
-            <h1 className="text-4xl font-bold mb-4">The Last Time Code</h1>
-            <p className="text-xl text-gray-300">Is NOW</p>
-            <p className="text-lg text-gray-400 mt-2">End of an Era</p>
-            <p className="mt-4 text-gray-300">Hi, I am a CS graduate from UGA.</p>
-            <button className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              SEE MY PROJECTS
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default App;
+export default SplashScreen;

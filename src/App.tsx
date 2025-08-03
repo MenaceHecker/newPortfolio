@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import SplashScreen from './components/SplashScreen'
 import Hero from './sections/Hero'
 import AnimatedCounter from './components/AnimatedCounter'
 import ShowcaseSection from './sections/ShowcaseSection'
@@ -10,18 +12,30 @@ import Contact from './sections/Contact'
 import Footer from './sections/Footer'
 
 const App = () => {
+  const [showSplash, setShowSplash] = useState(true)
+
+  const handleSplashComplete = () => {
+    setShowSplash(false)
+  }
+
   return (
     <>
-    <Hero/>
-    <Nav/>
-    <AnimatedCounter/>
-    <ShowcaseSection/>
-    <LogoSection/>
-    <FeatureCards/>
-    <ExperienceSection/>
-    <TechStack/>
-    <Contact/>
-    <Footer/>
+      {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+      
+      {!showSplash && (
+        <>
+          <Hero/>
+          <Nav/>
+          <AnimatedCounter/>
+          <ShowcaseSection/>
+          <LogoSection/>
+          <FeatureCards/>
+          <ExperienceSection/>
+          <TechStack/>
+          <Contact/>
+          <Footer/>
+        </>
+      )}
     </>
   )
 }
