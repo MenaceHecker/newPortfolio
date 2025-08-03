@@ -39,14 +39,11 @@ const Nav: React.FC<NavProps> = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // TEMPORARY TEST - Handle navigation clicks without smooth scrolling
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
     setActiveNav(href);
-    
-    // Test with instant scroll - no smooth behavior
+
     if (href === '#home') {
       window.scrollTo({ top: 0, behavior: 'auto' });
     } else {
@@ -69,7 +66,6 @@ const Nav: React.FC<NavProps> = () => {
       max-w-max border border-white border-opacity-5
     `}>
       <div className="flex items-center gap-1">
-        {/* Navigation Icons */}
         {navItems.map(({ href, icon: Icon, label }) => (
           <a
             key={href}
@@ -88,7 +84,6 @@ const Nav: React.FC<NavProps> = () => {
           >
             <Icon size={20} />
             
-            {/* Tooltip */}
             <span className={`
               absolute -top-10 left-1/2 transform -translate-x-1/2
               bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded
@@ -100,7 +95,6 @@ const Nav: React.FC<NavProps> = () => {
           </a>
         ))}
 
-        {/* Contact Button with Icon */}
         <a
           href="#contact"
           onClick={(e) => handleNavClick(e, '#contact')}
