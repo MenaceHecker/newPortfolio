@@ -204,14 +204,9 @@ const socialImgs = [
     url: "https://www.instagram.com/tu.shaw.r25/"
   },
   {
-    name: "fb",
-    imgPath: "/images/fb.png",
-    url: "www.instagram.com"
-  },
-  {
     name: "x",
-    imgPath: "/images/x.png",
-    url: "www.instagram.com"
+    imgPath: "/images/gitIcon.png",
+    url: "https://github.com/MenaceHecker"
   },
   {
     name: "linkedin",
