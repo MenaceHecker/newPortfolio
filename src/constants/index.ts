@@ -11,10 +11,6 @@ const navLinks = [
     name: "Skills",
     link: "#skills",
   },
-  {
-    name: "Testimonials",
-    link: "#testimonials",
-  },
 ];
 
 const words = [
@@ -74,10 +70,10 @@ const abilities = [
     desc: "Maintaining transparent project workflows with regular stand-ups, documentation, and proactive problem-solving.",
   },
   {
-    imgPath: "/images/time.png",
-    title: "On-Time Delivery",
-    desc: "Leveraging agile methodologies and efficient development practices to deliver milestone-driven results consistently.",
-  },
+  imgPath: "/images/devices.png",
+  title: "Cross-Platform Development",
+  desc: "Building versatile applications for iOS, Android, and web platforms using modern frameworks and unified codebases for maximum reach.",
+},
 ];
 
 const techStackImgs = [
@@ -202,7 +198,7 @@ const socialImgs = [
   },
   {
     name: "x",
-    imgPath: "/images/gitIcon.png",
+    imgPath: "/images/git-icon.png",
     url: "https://github.com/MenaceHecker"
   },
   {
