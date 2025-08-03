@@ -10,11 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceSection: React.FC = () => {
   useGSAP(() => {
-    // Get all timeline cards and logos for sequenced animation
     const timelineCards = gsap.utils.toArray('.timeline-card') as HTMLElement[];
     const timelineLogos = gsap.utils.toArray('.timeline-logo') as HTMLElement[];
     
-    // Animate timeline logos FIRST (they appear before the line)
     timelineLogos.forEach((logo) => {
       gsap.fromTo(logo,
         {
@@ -35,8 +33,6 @@ const ExperienceSection: React.FC = () => {
         }
       )
     })
-
-    // Timeline background grows AFTER icons appear (delayed start)
     const backgroundTimeline = document.querySelector('.timeline-background') as HTMLElement;
     if (backgroundTimeline && timelineLogos.length > 0) {
       gsap.fromTo(backgroundTimeline, 
@@ -49,16 +45,15 @@ const ExperienceSection: React.FC = () => {
           ease: 'none',
           scrollTrigger: {
             trigger: '.timeline-logo:first-child',
-            start: 'top 80%', // Starts after first icon begins appearing
-            end: '.timeline-logo:last-child top 30%', // Ends when last icon is fully visible
-            scrub: 1.5, // Slower scrub for smoother line growth
+            start: 'top 80%', 
+            end: '.timeline-logo:last-child top 30%', 
+            scrub: 1.5, 
             toggleActions: 'play none none reverse'
           }
         }
       )
     }
 
-    // Animate timeline cards content
     timelineCards.forEach((card) => {
       gsap.fromTo(card,
         {
@@ -81,7 +76,6 @@ const ExperienceSection: React.FC = () => {
       )
     })
 
-    // Animate experience text content
     const expTexts = gsap.utils.toArray('.expText') as HTMLElement[];
     expTexts.forEach((text) => {
       gsap.fromTo(text,
@@ -112,7 +106,6 @@ const ExperienceSection: React.FC = () => {
             title="Professional Work Experience" 
             sub=" 💼 My Career Overview"/>
             <div className="mt-32 relative">
-              {/* Continuous background timeline */}
               <div className="absolute xl:left-[35.5vw] md:left-10 left-5 top-0 w-1 h-full bg-gradient-to-b from-purple-400 to-blue-500 timeline-background z-5"></div>
               
               <div className="relative z-20 xl:space-y-32 space-y-10">
@@ -128,7 +121,6 @@ const ExperienceSection: React.FC = () => {
                     <div className="xl:w-4/6 ">
                     <div className="flex items-start">
                       <div className="timeline-wrapper">
-                        {/* Individual card timeline line - now invisible, just for spacing */}
                         <div className="timeline-line w-1 h-full opacity-0"/>
                       </div>
                       <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-30">
