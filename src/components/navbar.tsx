@@ -22,12 +22,11 @@ const Nav: React.FC<NavProps> = () => {
 
   // Navigation items with icons
   const navItems: NavItem[] = [
-    { href: '#home', icon: Home, label: 'Home' },
-    { href: '#about', icon: User, label: 'About' },
-    { href: '#experience', icon: Monitor, label: 'Experience' },
-    { href: '#skills', icon: BookOpen, label: 'Skills' },
-    { href: '#projects', icon: Briefcase, label: 'Projects' }
-  ];
+  { href: '#home', icon: Home, label: 'Home' },
+  { href: '#work', icon: Briefcase, label: 'Projects' }, 
+  { href: '#experience', icon: Monitor, label: 'Experience' }, 
+  { href: '#skills', icon: BookOpen, label: 'Skills' } 
+];
 
   // Track scroll position
   useEffect(() => {
