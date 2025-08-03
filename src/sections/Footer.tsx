@@ -13,7 +13,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col justify-center">
                 <p className="text-right">
-                    ©{new Date().getFullYear()} Tushar | Let's do it
+                    ©{new Date().getFullYear()} Tushar • End of an Era, Start of Another
                 </p>
             </div>
         </div>
