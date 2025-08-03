@@ -4,7 +4,6 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import type { GLTF } from 'three-stdlib';
 
-// Define a type for the GLTF result with proper Three.js types
 type GLTFResult = GLTF & {
   nodes: {
     [key: string]: THREE.Mesh;
@@ -24,7 +23,6 @@ const useImageTexture = (imagePath: string) => {
       imagePath,
       (loadedTexture) => {
         const canvas = document.createElement('canvas');
-        // Use monitor aspect ratio (typically 16:9 or 16:10)
         canvas.width = 1920;
         canvas.height = 1080;
         
@@ -32,11 +30,9 @@ const useImageTexture = (imagePath: string) => {
         if (ctx && loadedTexture.image) {
           const img = loadedTexture.image;
           
-          // Fill with black background first
           ctx.fillStyle = '#000000';
           ctx.fillRect(0, 0, canvas.width, canvas.height);
           
-          // Get actual image dimensions
           const imgWidth = img.naturalWidth || img.width;
           const imgHeight = img.naturalHeight || img.height;
           const imgAspect = imgWidth / imgHeight;
@@ -44,46 +40,38 @@ const useImageTexture = (imagePath: string) => {
           
           let drawWidth, drawHeight, offsetX, offsetY;
           
-          // Scale factor to control how much of the canvas the image fills
-          const SCALE_FACTOR = 1.0; // Fill the entire monitor
+          const SCALE_FACTOR = 1.0;
           
-          // Scale to fit within the canvas while maintaining aspect ratio
           if (imgAspect > canvasAspect) {
-            // Image is wider - fit to width with scale factor
             drawWidth = canvas.width * SCALE_FACTOR;
             drawHeight = drawWidth / imgAspect;
           } else {
-            // Image is taller - fit to height with scale factor
             drawHeight = canvas.height * SCALE_FACTOR;
             drawWidth = drawHeight * imgAspect;
           }
           
-          // Position the image slightly to the left to show more content
-          offsetX = (canvas.width - drawWidth) / 2 - (canvas.width * 0.035); // Shift left by 5% (reduced from 10%)
+          offsetX = (canvas.width - drawWidth) / 2 - (canvas.width * 0.035);
           offsetY = (canvas.height - drawHeight) / 2;
           
-          // Draw the image
           ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
           
-          // Create texture from canvas
           const canvasTexture = new THREE.CanvasTexture(canvas);
           canvasTexture.generateMipmaps = false;
           canvasTexture.minFilter = THREE.LinearFilter;
           canvasTexture.magFilter = THREE.LinearFilter;
           canvasTexture.wrapS = THREE.ClampToEdgeWrapping;
           canvasTexture.wrapT = THREE.ClampToEdgeWrapping;
-          canvasTexture.flipY = true; // Flip texture for proper orientation
+          canvasTexture.flipY = true;
           canvasTexture.needsUpdate = true;
           
           setTexture(canvasTexture);
         } else {
-          // Fallback to original texture if canvas processing fails
           loadedTexture.generateMipmaps = false;
           loadedTexture.minFilter = THREE.LinearFilter;
           loadedTexture.magFilter = THREE.LinearFilter;
           loadedTexture.wrapS = THREE.ClampToEdgeWrapping;
           loadedTexture.wrapT = THREE.ClampToEdgeWrapping;
-          loadedTexture.flipY = true; // Flip texture for proper orientation
+          loadedTexture.flipY = true;
           loadedTexture.needsUpdate = true;
           setTexture(loadedTexture);
         }
@@ -103,7 +91,6 @@ const useImageTexture = (imagePath: string) => {
 
 const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', textContent?: string, imageTexture?: THREE.Texture | null) => {
   const texture = useMemo(() => {
-    // If we have an image texture, use it directly
     if (screenType === 'image' && imageTexture) {
       return imageTexture;
     }
@@ -116,27 +103,21 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
     if (!ctx) return null;
     
     if (screenType === 'vscode') {
-      // VS Code dark theme - more accurate recreation
       ctx.fillStyle = '#1e1e1e';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Top bar
       ctx.fillStyle = '#2d2d30';
       ctx.fillRect(0, 0, canvas.width, 60);
       
-      // Sidebar
       ctx.fillStyle = '#252526';
       ctx.fillRect(0, 60, 120, canvas.height - 60);
       
-      // Code area
       ctx.fillStyle = '#1e1e1e';
       ctx.fillRect(120, 60, canvas.width - 120, canvas.height - 60);
       
-      // Terminal area at bottom
       ctx.fillStyle = '#181818';
       ctx.fillRect(120, canvas.height - 200, canvas.width - 120, 200);
       
-      // Add VS Code title bar buttons
       ctx.fillStyle = '#ff5f57';
       ctx.beginPath();
       ctx.arc(20, 30, 8, 0, 2 * Math.PI);
@@ -152,7 +133,6 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
       ctx.arc(80, 30, 8, 0, 2 * Math.PI);
       ctx.fill();
       
-      // File explorer items
       ctx.fillStyle = '#cccccc';
       ctx.font = '14px "SF Mono", Monaco, monospace';
       ctx.textAlign = 'left';
@@ -175,7 +155,6 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
         ctx.fillText(item, 10, 100 + i * 24);
       });
       
-      // Code content - React/JavaScript
       ctx.font = '16px "SF Mono", Monaco, monospace';
       const codeLines = [
         'import { Slot, Stack, useRouter } from "expo-router";',
@@ -221,44 +200,36 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
         ctx.fillText(line, 140, 120 + i * 22);
       });
       
-      // Terminal content
       ctx.fillStyle = '#cccccc';
       ctx.font = '14px "SF Mono", Monaco, monospace';
       ctx.fillText('PS C:\\Users\\thedy\\OneDrive\\Desktop\\SocialMedia\\Crumb>', 140, canvas.height - 160);
       
     } else if (screenType === 'github') {
-      // GitHub profile - more accurate recreation
       ctx.fillStyle = '#0d1117';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // GitHub header
       ctx.fillStyle = '#21262d';
       ctx.fillRect(0, 0, canvas.width, 80);
       
-      // GitHub logo area
       ctx.fillStyle = '#f0f6fc';
       ctx.font = 'bold 24px Arial';
       ctx.textAlign = 'left';
       ctx.fillText('🐙 GitHub', 40, 50);
       
-      // Search bar
       ctx.fillStyle = '#21262d';
       ctx.fillRect(300, 25, 400, 30);
       ctx.strokeStyle = '#30363d';
       ctx.lineWidth = 1;
       ctx.strokeRect(300, 25, 400, 30);
       
-      // Profile section
       ctx.fillStyle = '#161b22';
       ctx.fillRect(40, 120, 320, 300);
       
-      // Profile picture (Spider-Man placeholder)
       ctx.fillStyle = '#e74c3c';
       ctx.beginPath();
       ctx.arc(80, 180, 30, 0, 2 * Math.PI);
       ctx.fill();
       
-      // Profile info
       ctx.fillStyle = '#f0f6fc';
       ctx.font = 'bold 28px Arial';
       ctx.fillText('Tushar Mishra', 130, 170);
@@ -267,26 +238,22 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
       ctx.font = '18px Arial';
       ctx.fillText('MenaceHecker', 130, 195);
       
-      // Bio
       ctx.fillStyle = '#f0f6fc';
       ctx.font = '16px Arial';
       ctx.fillText('💻 CS @uga \'25 | Ex SWE Intern @crst', 50, 240);
       ctx.fillText('🚀 Full-stack & Cloud Dev | AI + DevOps', 50, 265);
       ctx.fillText('🔨 Building scalable, data-driven apps', 50, 290);
       
-      // Stats
       ctx.fillStyle = '#8b949e';
       ctx.font = '14px Arial';
       ctx.fillText('👥 2 followers • 1 following', 50, 320);
       ctx.fillText('📍 Athens, GA • 🕐 19:37 (UTC -04:00)', 50, 340);
       ctx.fillText('🔗 https://www.menacehecker.com/', 50, 360);
       
-      // README section
       ctx.fillStyle = '#f0f6fc';
       ctx.font = 'bold 24px Arial';
       ctx.fillText('👋 Hey there! I\'m Tushar', 400, 160);
       
-      // Tech stack badges
       const badges = [
         { text: 'JAVA', color: '#f89820' },
         { text: 'PYTHON', color: '#3776ab' },
@@ -314,7 +281,6 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
       });
       
     } else {
-      // Simple text fallback
       ctx.fillStyle = '#1a1a2e';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = '#00d4ff';
@@ -325,7 +291,7 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
     }
     
     const texture = new THREE.CanvasTexture(canvas);
-    texture.flipY = true; // Flip texture for proper orientation
+    texture.flipY = true;
     texture.needsUpdate = true;
     return texture;
   }, [screenType, textContent, imageTexture]);
@@ -333,16 +299,12 @@ const useScreenTexture = (screenType: 'vscode' | 'github' | 'text' | 'image', te
   return texture;
 };
 
-// Use proper React Three Fiber group props type
 export function Model(props: React.ComponentProps<'group'>) {
-  // Use the generic GLTF type and cast with unknown first for safety
   const { nodes, materials } = useGLTF('/models/my_workspace._xyz.glb') as unknown as GLTFResult;
   
-  // Load both real images - try different possible paths
   const { texture: githubTexture, loaded: githubLoaded } = useImageTexture('/images/github-profile.png');
   const { texture: vscodeTexture, loaded: vscodeLoaded } = useImageTexture('/images/vsc-ss.png');
   
-  // Create screen textures - prioritize real images when loaded
   const leftScreenTexture = useScreenTexture(
     vscodeLoaded && vscodeTexture ? 'image' : 'vscode',
     undefined,
@@ -355,7 +317,6 @@ export function Model(props: React.ComponentProps<'group'>) {
   );
   const tabletScreenTexture = useScreenTexture('text', 'DEVELOPER');
   
-  // Create screen materials with optimized settings
   const leftScreenMaterial = useMemo(() => {
     if (!leftScreenTexture) return materials.Screen;
     const material = new THREE.MeshBasicMaterial({ 
@@ -363,7 +324,7 @@ export function Model(props: React.ComponentProps<'group'>) {
       color: '#ffffff',
       transparent: false,
       side: THREE.FrontSide,
-      toneMapped: false // Prevents color shifts
+      toneMapped: false
     });
     return material;
   }, [leftScreenTexture, materials.Screen]);
@@ -375,7 +336,7 @@ export function Model(props: React.ComponentProps<'group'>) {
       color: '#ffffff',
       transparent: false,
       side: THREE.FrontSide,
-      toneMapped: false // Prevents color shifts
+      toneMapped: false
     });
     return material;
   }, [rightScreenTexture, materials.Screen]);
@@ -389,7 +350,6 @@ export function Model(props: React.ComponentProps<'group'>) {
     });
   }, [tabletScreenTexture, materials.Screen]);
 
-  // Debug: Log available nodes and loading status
   React.useEffect(() => {
     console.log('Available nodes:', Object.keys(nodes));
     console.log('Available materials:', Object.keys(materials));
@@ -425,15 +385,12 @@ export function Model(props: React.ComponentProps<'group'>) {
       <mesh geometry={nodes.Computer_Plastic_0.geometry} material={materials.Plastic} />
       <mesh geometry={nodes.Computer_Comp2_0.geometry} material={materials.Comp2} />
       <mesh geometry={nodes.LeftMonitor_Plastic_0.geometry} material={materials.Plastic} />
-      {/* Left Monitor Screen with VS Code Screenshot */}
       <mesh geometry={nodes.LeftMonitor_Screen_0.geometry} material={leftScreenMaterial} />
       <mesh geometry={nodes.RightMonitor_Plastic_0.geometry} material={materials.Plastic} />
-      {/* Right Monitor Screen with GitHub Profile */}
       <mesh geometry={nodes.RightMonitor_Screen_0.geometry} material={rightScreenMaterial} />
       <mesh geometry={nodes.Tablet_Castors_0.geometry} material={materials.Castors} />
       <mesh geometry={nodes.Tablet_Mat_0.geometry} material={materials.material} />
       <mesh geometry={nodes.Tablet_Plastic_0.geometry} material={materials.Plastic} />
-      {/* Try different possible tablet screen geometries */}
       {nodes.Tablet_Screen_0 && (
         <mesh geometry={nodes.Tablet_Screen_0.geometry} material={tabletScreenMaterial} />
       )}
