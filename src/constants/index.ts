@@ -69,17 +69,17 @@ const abilities = [
   {
     imgPath: "/images/seo.png",
     title: "Quality Focus",
-    desc: "Delivering high-quality results while maintaining attention to every detail.",
+    desc: "Writing clean, scalable code with rigorous testing and optimization, ensuring robust performance across all platforms.",
   },
   {
     imgPath: "/images/chat.png",
     title: "Reliable Communication",
-    desc: "Keeping you updated at every step to ensure transparency and clarity.",
+    desc: "Maintaining transparent project workflows with regular stand-ups, documentation, and proactive problem-solving.",
   },
   {
     imgPath: "/images/time.png",
     title: "On-Time Delivery",
-    desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
+    desc: "Leveraging agile methodologies and efficient development practices to deliver milestone-driven results consistently.",
   },
 ];
 
