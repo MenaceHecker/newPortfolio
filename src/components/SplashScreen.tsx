@@ -53,7 +53,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Floating cubes */}
-        {[...Array(6)].map((_, i) => ( // Reducing this from 8 to 6 for mobile
+        {[...Array(6)].map((_, i) => (
           <div
             key={i}
             className="absolute w-6 h-6 sm:w-8 sm:h-8 border border-purple-400/30 transform rotate-45 animate-pulse"
@@ -106,16 +106,27 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
           </div>
         </div>
 
-        {/* Brand name */}
-        <div className={`px-4 transition-all duration-1000 delay-300 ${
+        {/* THE LAST TIME IS NOW Image */}
+        <div className={`px-4 mb-6 transition-all duration-1000 delay-300 ${
           animationPhase === 'entering' ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'
         }`}>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 tracking-wider text-center">
-            <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              THE LAST TIME
-            </span>
-          </h1>
-          <div className="flex items-center justify-center gap-2 sm:gap-4 mb-6">
+          <div className="relative max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+            <img 
+              src="/images/lastTime.png" 
+              alt="THE LAST TIME IS NOW"
+              className="w-full h-auto drop-shadow-2xl filter brightness-110 contrast-110"
+              style={{
+                filter: 'drop-shadow(0 0 20px rgba(147, 51, 234, 0.3))'
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Brand name - keeping as backup/alternative */}
+        <div className={`px-4 transition-all duration-1000 delay-500 ${
+          animationPhase === 'entering' ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'
+        }`}>
+          <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4">
             <div className="w-8 sm:w-12 md:w-16 h-1 bg-gradient-to-r from-transparent to-purple-400 rounded-full"></div>
             <div className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-purple-400 rounded-full flex items-center justify-center">
               <span className="text-purple-400 font-mono text-xs sm:text-sm">&lt;/&gt;</span>
@@ -128,7 +139,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Subtitle */}
-        <div className={`px-4 transition-all duration-1000 delay-500 ${
+        <div className={`px-4 transition-all duration-1000 delay-700 ${
           animationPhase === 'entering' ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'
         }`}>
           <p className="text-gray-300 text-lg sm:text-xl mt-6 sm:mt-8 font-light tracking-wide max-w-xs sm:max-w-md mx-auto text-center">
@@ -140,7 +151,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Loading animation */}
-        <div className={`mt-12 sm:mt-16 px-4 transition-all duration-1000 delay-700 ${
+        <div className={`mt-12 sm:mt-16 px-4 transition-all duration-1000 delay-900 ${
           animationPhase === 'entering' ? 'opacity-0' : 'opacity-100'
         }`}>
           <div className="flex items-center justify-center gap-2 sm:gap-4">

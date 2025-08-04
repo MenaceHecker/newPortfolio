@@ -1,7 +1,7 @@
-import { Environment, OrbitControls } from "@react-three/drei"
+import { OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import { Computer } from "./Models/Computer-optimized_new"
-// import { Model as GamingSetup } from '../components/Models/GamingSetup'
+// import { Computer } from "./Models/Computer-optimized_new"
+import { GamingSetup } from '../components/Models/GamingSetup'
 
 const ContactExperience = () => {
   return (
@@ -10,13 +10,13 @@ const ContactExperience = () => {
       shadows
       style={{ background: '#597579' }}
     >
-      <ambientLight intensity={0.5} color="#fff436" />
-      <directionalLight position={[5,5,3]} intensity={2.5} color="ffd9b3"/>
+      <ambientLight intensity={0.5} color="#ffffff" />
+      <directionalLight position={[5,5,3]} intensity={2.5} color="ffffff"/>
       <directionalLight
         position={[5,9,1]}
         castShadow
         intensity={2.5}
-        color="ffd9b3"
+        color="#ffd9b3"
       />
       {/* <spotLight
       position={[-5,5,5]}
@@ -35,9 +35,9 @@ const ContactExperience = () => {
         minPolarAngle={Math.PI/4}
         maxPolarAngle={Math.PI/2}
         />
-        <group scale={0.03} position={[0, -1.5, -2]} castShadow>
-          <Computer/>
-          {/* <GamingSetup/> */}
+        <group scale={2.5} position={[-1, -1.5, -0.75]} castShadow>
+          {/* <Computer/> */}
+          <GamingSetup/>
         </group>
         <group scale={[1,1,1]}>
           <mesh receiveShadow position={[0,-1.5,0]} rotation={[-Math.PI / 2, 0, 0]}>
