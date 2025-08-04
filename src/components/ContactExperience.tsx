@@ -1,11 +1,15 @@
-import { Environment,OrbitControls} from "@react-three/drei"
+import { Environment, OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Computer } from "./Models/Computer-optimized_new"
 // import { Model as GamingSetup } from '../components/Models/GamingSetup'
 
 const ContactExperience = () => {
   return (
-    <Canvas camera={{position: [0,3,7], fov: 45}} shadows>
+    <Canvas 
+      camera={{position: [0,3,7], fov: 45}} 
+      shadows
+      style={{ background: '#597579' }}
+    >
       <ambientLight intensity={0.5} color="#fff436" />
       <directionalLight position={[5,5,3]} intensity={2.5} color="ffd9b3"/>
       <directionalLight
@@ -21,8 +25,10 @@ const ContactExperience = () => {
       intensity={1}
       castShadow
       /> */}
-      <Environment preset="city"/>
-
+      
+      {/* Removed Environment preset to use custom background */}
+      {/* <Environment preset="city"/> */}
+       
       <OrbitControls
         enableZoom={false}
         enablePan={false}
